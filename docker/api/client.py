@@ -7,7 +7,7 @@ import requests
 import requests.adapters
 import requests.exceptions
 
-from .. import auth
+from .. import auth, context
 from ..constants import (
     DEFAULT_MAX_POOL_SIZE,
     DEFAULT_NUM_POOLS,
@@ -18,7 +18,6 @@ from ..constants import (
     MINIMUM_DOCKER_API_VERSION,
     STREAM_HEADER_SIZE_BYTES,
 )
-from .. import context
 from ..errors import (
     DockerException,
     InvalidVersion,
