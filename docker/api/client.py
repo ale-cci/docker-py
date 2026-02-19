@@ -128,6 +128,7 @@ class APIClient(
             current_ctx = context.ContextAPI.get_current_context()
             if current_ctx is not None:
                 base_url = current_ctx.Host
+                tls = current_ctx.TLSConfig
 
         self.base_url = base_url
         self.timeout = timeout
