@@ -18,6 +18,7 @@ from ..constants import (
     MINIMUM_DOCKER_API_VERSION,
     STREAM_HEADER_SIZE_BYTES,
 )
+from .. import context
 from ..errors import (
     DockerException,
     InvalidVersion,
@@ -123,6 +124,11 @@ class APIClient(
             raise TLSParameterError(
                 'If using TLS, the base_url argument must be provided.'
             )
+
+        if base_url is None:
+            current_ctx = context.ContextAPI.get_current_context()
+            if current_ctx is not None:
+                base_url = current_ctx.Host
 
         self.base_url = base_url
         self.timeout = timeout
